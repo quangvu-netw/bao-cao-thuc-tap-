@@ -33,7 +33,7 @@
                     {{end}}
                     {{ $pages := ($currentNode.Scratch.Get "pages") }}
 
-                    {{ range $pages.ByWeight  }}
+                    {{ range $pages.ByWeight }}
                         {{ template "menu-nextprev" dict "menu" . "currentnode" $currentNode }}
                     {{end}}
             {{ end }}
