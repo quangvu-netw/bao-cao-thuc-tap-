@@ -27,7 +27,7 @@ chapter: false
 <div>0931629772</div>
 
 <div style="font-weight: bold; color: #1e293b;">Email:</div>
-<div><a href="mailto:trantrung04.contact@gmail.com" style="color: #2563eb; text-decoration: none;">thuanh9999.com@gmail.com</a></div>
+<div><a href="mailto:thuanh9999.com@gmail.com" style="color: #2563eb; text-decoration: none;">thuanh9999.com@gmail.com</a></div>
 
 <div style="font-weight: bold; color: #1e293b;">University:</div>
 <div>Ho Chi Minh City University of Technology(HUTECH)</div>

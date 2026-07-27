@@ -86,13 +86,13 @@ Thực hành xây dựng hệ thống CI/CD hoàn chỉnh sử dụng các dịc
 * **Kết nối GitHub với CodeBuild:**
   * Truy cập dịch vụ CodeBuild tại region `ap-southeast-1` (Singapore).
   * Tạo Build project mới, chọn Source provider là **GitHub**.
-  * AWS yêu cầu xác thực GitHub OAuth - đăng nhập tài khoản GitHub `tranvantrung27` và cấp quyền (Authorize) cho AWS CodeBuild truy cập repository.
+  * AWS yêu cầu xác thực GitHub OAuth - đăng nhập tài khoản GitHub `quangvu-netw` và cấp quyền (Authorize) cho AWS CodeBuild truy cập repository.
   * Xác thực 2 lớp (2FA) trên GitHub qua thiết bị di động thành công.
   * Kết nối GitHub OAuth thành công, CodeBuild nhận diện được tài khoản và repository.
 
 * **Tạo Build Project `AWS-FCJ-APP` thành công:**
   * **Source provider:** GitHub
-  * **Repository:** `https://github.com/tranvantrung27/aws-fcj-pipeline.git` (sử dụng GitHub repository vừa tạo ở bước 3)
+  * **Repository:** `https://github.com/quangvu-netw/aws-fcj-pipeline.git` (sử dụng GitHub repository vừa tạo ở bước 3)
   * **Environment:**
     * Operating System: Amazon Linux
     * Runtime: Standard
@@ -101,7 +101,7 @@ Thực hành xây dựng hệ thống CI/CD hoàn chỉnh sử dụng các dịc
   * **Buildspec:** Sử dụng file `buildspec.yml` có sẵn trong mã nguồn
   * **Artifacts:**
     * Type: Amazon S3
-    * Bucket name: `aws-cicd-ec2-trantrung04`
+    * Bucket name: `aws-cicd-ec2-lamquangvu`
   * **Logs:**
     * CloudWatch Logs: Enabled
     * Group name: `aws-cicd-ec2-group`
@@ -119,7 +119,7 @@ Thực hành xây dựng hệ thống CI/CD hoàn chỉnh sử dụng các dịc
 * **Lưu ý:** Tại thời điểm thực hành, CodeDeploy Console bị chuyển hướng sang trang "Complete your account setup" do tài khoản AWS đang trong quá trình xác minh. Cần chờ xác minh hoàn tất để tiếp tục.
 
 ###### **Bước 6: Tự động hóa bằng AWS CodePipeline (Đang chờ)**
-* Tạo Pipeline kết nối: Source (GitHub `tranvantrung27/aws-fcj-pipeline`) -> Build (CodeBuild `AWS-FCJ-APP`) -> Deploy (CodeDeploy `AWS-FCJ-APP` / `AWS-FCJ-DG`).
+* Tạo Pipeline kết nối: Source (GitHub `quangvu-netw/aws-fcj-pipeline`) -> Build (CodeBuild `AWS-FCJ-APP`) -> Deploy (CodeDeploy `AWS-FCJ-APP` / `AWS-FCJ-DG`).
 * Kiểm thử quá trình tự động triển khai khi có commit mới.
 * CodePipeline Console đã truy cập thành công (Pipelines page hiển thị trống, chưa có pipeline nào).
 
@@ -131,7 +131,7 @@ Thực hành tạo File Storage Gateway để kết nối dữ liệu từ môi 
 ##### 2. Các bước triển khai thực tế
 ###### **Bước 1: Chuẩn bị tài nguyên (S3 & EC2)**
 * **Khởi tạo Amazon S3 Bucket:**
-  * Tạo một S3 bucket đặt tên là `s3-instancestoragegw-trantrung04` tại region `ap-southeast-1` (Singapore) làm nơi lưu trữ dữ liệu Backend.
+  * Tạo một S3 bucket đặt tên là `s3-instancestoragegw-lamquangvu` tại region `ap-southeast-1` (Singapore) làm nơi lưu trữ dữ liệu Backend.
   ![S3 Storage Gateway Created](/images/worklog/week-11/s3_storagegw_created.png)
 * **Khởi chạy EC2 Storage Gateway Instance:**
   * Khởi chạy một EC2 instance đóng vai trò là Storage Gateway Appliance (mô phỏng máy chủ tại môi trường On-premises).

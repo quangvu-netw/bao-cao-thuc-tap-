@@ -46,7 +46,7 @@ sudo systemctl enable ssh --now
 * Thu được tệp ổ đĩa ảo hóa dạng **`.vmdk`** (ví dụ: `Ubuntu-disk1.vmdk`).
 
 ###### 2.2 Tải máy ảo lên AWS
-* Truy cập dịch vụ **Amazon S3** và tạo một bucket mới `vm-import-export-bucket-trung-2026` bật tùy chọn **ACLs enabled** và tắt chặn quyền truy cập công khai (Block Public Access = Off).
+* Truy cập dịch vụ **Amazon S3** và tạo một bucket mới `vm-import-export-bucket-vu-2026` bật tùy chọn **ACLs enabled** và tắt chặn quyền truy cập công khai (Block Public Access = Off).
 * Upload tệp tin `Ubuntu-disk1.vmdk` lên bucket vừa tạo.
 * Minh chứng cấu hình bucket cho phép ACLs:
 
@@ -124,7 +124,7 @@ Thực hiện dọn dẹp sạch toàn bộ tài nguyên thử nghiệm để tr
 ```bash
 aws ec2 terminate-instances --instance-ids <InstanceId>
 aws ec2 deregister-image --image-id <AMI_ID>
-aws s3 rb s3://vm-import-export-bucket-trung-2026/ --force
+aws s3 rb s3://vm-import-export-bucket-vu-2026/ --force
 aws iam delete-role --role-name vmimport
 ```
 

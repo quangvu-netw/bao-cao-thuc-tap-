@@ -60,16 +60,16 @@ aws ec2 describe-instances --output table --region ap-southeast-1
 ##### 5. AWS CLI with Amazon S3
 * Created a globally unique S3 Bucket:
 ```bash
-aws s3 mb s3://tranvantrung-lab11-cli-2026 --region ap-southeast-1
+aws s3 mb s3://lamquangvu-lab11-cli-2026 --region ap-southeast-1
 ```
 * Enabled Bucket Versioning:
 ```bash
-aws s3api put-bucket-versioning --bucket tranvantrung-lab11-cli-2026 --versioning-configuration Status=Enabled
+aws s3api put-bucket-versioning --bucket lamquangvu-lab11-cli-2026 --versioning-configuration Status=Enabled
 ```
 * Created a test file and uploaded it to S3:
 ```bash
 echo "Hello from AWS CLI Lab 11" > lab11-test.txt
-aws s3 cp lab11-test.txt s3://tranvantrung-lab11-cli-2026/
+aws s3 cp lab11-test.txt s3://lamquangvu-lab11-cli-2026/
 ```
 * Verified bucket configuration in S3 console:
 
@@ -82,7 +82,7 @@ aws sns create-topic --name "lab11-sns-topic"
 ```
 * Subscribed an email endpoint to the topic:
 ```bash
-aws sns subscribe --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic" --protocol email --notification-endpoint "tranvantrung27@gmail.com"
+aws sns subscribe --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic" --protocol email --notification-endpoint "thuanh9999.com@gmail.com"
 ```
 * Verified topic creation in SNS Dashboard:
 
@@ -164,7 +164,7 @@ aws ec2 delete-route-table --route-table-id rtb-0321d43c16d3d1af1
 aws ec2 detach-internet-gateway --internet-gateway-id igw-00446df6401dd9c1b --vpc-id vpc-018752326f096b570
 aws ec2 delete-internet-gateway --internet-gateway-id igw-00446df6401dd9c1b
 aws ec2 delete-vpc --vpc-id vpc-018752326f096b570
-aws s3 rb s3://tranvantrung-lab11-cli-2026/ --force
+aws s3 rb s3://lamquangvu-lab11-cli-2026/ --force
 aws sns delete-topic --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic"
 aws iam delete-user --user-name "dev-1"
 aws iam delete-group --group-name "dev"
@@ -263,13 +263,13 @@ AWS Backup is a fully managed service that makes it easy to centralize and autom
 
 ##### 2. Preparation
 ###### 2.1 Create S3 Bucket
-* Created S3 Bucket `aws-backup-lab-artifacts-tranvantrung` to hold deployment artifacts:
+* Created S3 Bucket `aws-backup-lab-artifacts-lamquangvu` to hold deployment artifacts:
 ```bash
-aws s3 mb s3://aws-backup-lab-artifacts-tranvantrung --region ap-southeast-1
+aws s3 mb s3://aws-backup-lab-artifacts-lamquangvu --region ap-southeast-1
 ```
 * Uploaded Lambda Function zip source code (`lambda_function.zip`):
 ```bash
-aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-tranvantrung/lambda_function.zip
+aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-lamquangvu/lambda_function.zip
 ```
 * Assigned a Public Read bucket policy to allow CloudFormation template deployment:
 
@@ -280,7 +280,7 @@ aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-tranvantrung/lambda_
 * **Important parameter adjustment:** Changed the default EC2 instance type from `t2.micro` to `t3.micro` to comply with the account's Free Tier restrictions.
 * Run deployment command via CLI:
 ```bash
-aws cloudformation create-stack --stack-name "Backup-plan" --template-body "file://backup-lab.yaml" --parameters ParameterKey=AvailabilityZone,ParameterValue="ap-southeast-1a" ParameterKey=NotificationEmail,ParameterValue="tranvantrung27@gmail.com" ParameterKey=S3BucketName,ParameterValue="aws-backup-lab-artifacts-tranvantrung" ParameterKey=S3KeyLambdaZip,ParameterValue="lambda_function.zip" --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
+aws cloudformation create-stack --stack-name "Backup-plan" --template-body "file://backup-lab.yaml" --parameters ParameterKey=AvailabilityZone,ParameterValue="ap-southeast-1a" ParameterKey=NotificationEmail,ParameterValue="thuanh9999.com@gmail.com" ParameterKey=S3BucketName,ParameterValue="aws-backup-lab-artifacts-lamquangvu" ParameterKey=S3KeyLambdaZip,ParameterValue="lambda_function.zip" --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
 ```
 * Verified stack completed deployment (`CREATE_COMPLETE` / `UPDATE_COMPLETE`) with a shortened stack description:
 
@@ -332,6 +332,6 @@ aws backup delete-backup-selection --backup-plan-id "<Backup-Plan-ID>" --selecti
 aws backup delete-backup-plan --backup-plan-id "<Backup-Plan-ID>"
 aws backup delete-backup-vault --backup-vault-name "BACKUP-LAB-VAULT"
 aws cloudformation delete-stack --stack-name Backup-plan
-aws s3 rb s3://aws-backup-lab-artifacts-tranvantrung/ --force
+aws s3 rb s3://aws-backup-lab-artifacts-lamquangvu/ --force
 ```
 

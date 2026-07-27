@@ -66,7 +66,7 @@ This week, I practiced the actual Lab sequence from **Lab 28 to Lab 31** concern
 
 *   **Execute Remote PowerShell Script via Run Command**:
     *   Used **Run Command** with the `AWS-RunPowerShellScript` document to execute `net user` on both Windows instances without requiring an RDP session.
-    *   Configured S3 log storage to write standard execution outputs to `ssm-runcommand-logs-trantrung04` S3 bucket.
+    *   Configured S3 log storage to write standard execution outputs to `ssm-runcommand-logs-lamquangvu` S3 bucket.
     *   The command ran successfully, returning active local user accounts: `Administrator`, `Guest`, `DefaultAccount`, `WDAGUtilityAccount`.
     *   *Real screenshots*:
         *   Run Command configuration: ![Run Command Config](/images/worklog/week-12/8_run_command_config.png)
@@ -78,7 +78,7 @@ This week, I practiced the actual Lab sequence from **Lab 28 to Lab 31** concern
 To prevent any unexpected charges and ensure cost optimization under the AWS Free Tier, all resources were completely cleaned up immediately after testing:
 *   **Terminated** both EC2 instances: `Windows-Lab-SSM-1` and `Windows-Lab-SSM-2`.
 *   Deleted key pairs: `Windows-Lab-SSM-1-Key` and `Windows-Lab-SSM-2-Key` (including local `.pem` files).
-*   Emptied and deleted the `ssm-runcommand-logs-trantrung04` S3 bucket.
+*   Emptied and deleted the `ssm-runcommand-logs-lamquangvu` S3 bucket.
 *   Removed IAM Role associations, detached SSM policy, and deleted IAM Role `Windows-Lab-SSM-Role` and Instance Profile.
 *   Deleted public subnets, Internet Gateway, and VPC `windows-lab-ssm`.
 

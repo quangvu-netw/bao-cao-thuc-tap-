@@ -46,7 +46,7 @@ sudo systemctl enable ssh --now
 * Generated a virtual disk image file with the **`.vmdk`** extension (e.g. `Ubuntu-disk1.vmdk`).
 
 ###### 2.2 Upload VM to AWS
-* Created a globally unique S3 Bucket `vm-import-export-bucket-trung-2026` with **ACLs enabled** and Block Public Access turned off.
+* Created a globally unique S3 Bucket `vm-import-export-bucket-vu-2026` with **ACLs enabled** and Block Public Access turned off.
 * Uploaded the `Ubuntu-disk1.vmdk` file into the bucket.
 * Verified the bucket configurations on the console:
 
@@ -124,7 +124,7 @@ Cleaned up resources to prevent charges:
 ```bash
 aws ec2 terminate-instances --instance-ids <InstanceId>
 aws ec2 deregister-image --image-id <AMI_ID>
-aws s3 rb s3://vm-import-export-bucket-trung-2026/ --force
+aws s3 rb s3://vm-import-export-bucket-vu-2026/ --force
 aws iam delete-role --role-name vmimport
 ```
 

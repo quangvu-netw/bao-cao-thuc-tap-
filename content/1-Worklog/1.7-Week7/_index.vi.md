@@ -60,16 +60,16 @@ aws ec2 describe-instances --output table --region ap-southeast-1
 ##### 5. AWS CLI với Amazon S3
 * Khởi tạo S3 Bucket có tên duy nhất toàn cầu:
 ```bash
-aws s3 mb s3://tranvantrung-lab11-cli-2026 --region ap-southeast-1
+aws s3 mb s3://lamquangvu-lab11-cli-2026 --region ap-southeast-1
 ```
 * Bật tính năng lưu trữ phiên bản (Versioning) cho Bucket:
 ```bash
-aws s3api put-bucket-versioning --bucket tranvantrung-lab11-cli-2026 --versioning-configuration Status=Enabled
+aws s3api put-bucket-versioning --bucket lamquangvu-lab11-cli-2026 --versioning-configuration Status=Enabled
 ```
 * Tạo tệp tin thử nghiệm và tải lên S3:
 ```bash
 echo "Hello from AWS CLI Lab 11" > lab11-test.txt
-aws s3 cp lab11-test.txt s3://tranvantrung-lab11-cli-2026/
+aws s3 cp lab11-test.txt s3://lamquangvu-lab11-cli-2026/
 ```
 * Xác minh trạng thái cấu hình Bucket trên Console:
 
@@ -82,7 +82,7 @@ aws sns create-topic --name "lab11-sns-topic"
 ```
 * Đăng ký nhận thông báo qua email:
 ```bash
-aws sns subscribe --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic" --protocol email --notification-endpoint "tranvantrung27@gmail.com"
+aws sns subscribe --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic" --protocol email --notification-endpoint "thuanh9999.com@gmail.com"
 ```
 * Xác minh SNS Topic hiển thị trên Console:
 
@@ -166,7 +166,7 @@ aws ec2 delete-route-table --route-table-id rtb-0321d43c16d3d1af1
 aws ec2 detach-internet-gateway --internet-gateway-id igw-00446df6401dd9c1b --vpc-id vpc-018752326f096b570
 aws ec2 delete-internet-gateway --internet-gateway-id igw-00446df6401dd9c1b
 aws ec2 delete-vpc --vpc-id vpc-018752326f096b570
-aws s3 rb s3://tranvantrung-lab11-cli-2026/ --force
+aws s3 rb s3://lamquangvu-lab11-cli-2026/ --force
 aws sns delete-topic --topic-arn "arn:aws:sns:ap-southeast-1:938834038589:lab11-sns-topic"
 aws iam delete-user --user-name "dev-1"
 aws iam delete-group --group-name "dev"
@@ -265,13 +265,13 @@ AWS Backup là một dịch vụ quản lý và tự động hóa quá trình sa
 
 ##### 2. Chuẩn bị (Preparation)
 ###### 2.1 Tạo S3 Bucket
-* Khởi tạo S3 Bucket `aws-backup-lab-artifacts-tranvantrung` để chứa các tệp tin deploy:
+* Khởi tạo S3 Bucket `aws-backup-lab-artifacts-lamquangvu` để chứa các tệp tin deploy:
 ```bash
-aws s3 mb s3://aws-backup-lab-artifacts-tranvantrung --region ap-southeast-1
+aws s3 mb s3://aws-backup-lab-artifacts-lamquangvu --region ap-southeast-1
 ```
 * Tải tệp zip chứa source code của Lambda Function (`lambda_function.zip`) lên bucket:
 ```bash
-aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-tranvantrung/lambda_function.zip
+aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-lamquangvu/lambda_function.zip
 ```
 * Gán Public Policy cho Bucket để CloudFormation có thể đọc dữ liệu deploy:
 
@@ -282,7 +282,7 @@ aws s3 cp lambda_function.zip s3://aws-backup-lab-artifacts-tranvantrung/lambda_
 * **Tham số quan trọng:** Thay đổi cấu hình mặc định của EC2 Instance từ `t2.micro` sang `t3.micro` để phù hợp với chính sách bảo mật Free Tier của tài khoản và tránh lỗi khởi tạo.
 * Chạy lệnh deploy qua CLI:
 ```bash
-aws cloudformation create-stack --stack-name "Backup-plan" --template-body "file://backup-lab.yaml" --parameters ParameterKey=AvailabilityZone,ParameterValue="ap-southeast-1a" ParameterKey=NotificationEmail,ParameterValue="tranvantrung27@gmail.com" ParameterKey=S3BucketName,ParameterValue="aws-backup-lab-artifacts-tranvantrung" ParameterKey=S3KeyLambdaZip,ParameterValue="lambda_function.zip" --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
+aws cloudformation create-stack --stack-name "Backup-plan" --template-body "file://backup-lab.yaml" --parameters ParameterKey=AvailabilityZone,ParameterValue="ap-southeast-1a" ParameterKey=NotificationEmail,ParameterValue="thuanh9999.com@gmail.com" ParameterKey=S3BucketName,ParameterValue="aws-backup-lab-artifacts-lamquangvu" ParameterKey=S3KeyLambdaZip,ParameterValue="lambda_function.zip" --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
 ```
 * Xác minh Stack chuyển sang trạng thái `CREATE_COMPLETE` / `UPDATE_COMPLETE` với mô tả rút ngắn gọn:
 
@@ -334,7 +334,7 @@ aws backup delete-backup-selection --backup-plan-id "<Backup-Plan-ID>" --selecti
 aws backup delete-backup-plan --backup-plan-id "<Backup-Plan-ID>"
 aws backup delete-backup-vault --backup-vault-name "BACKUP-LAB-VAULT"
 aws cloudformation delete-stack --stack-name Backup-plan
-aws s3 rb s3://aws-backup-lab-artifacts-tranvantrung/ --force
+aws s3 rb s3://aws-backup-lab-artifacts-lamquangvu/ --force
 ```
 
 

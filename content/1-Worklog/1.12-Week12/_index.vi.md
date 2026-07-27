@@ -66,7 +66,7 @@ Trong tuần này, tôi đã thực hành chuỗi Lab thực tế từ **Lab 28 
 
 *   **Gửi câu lệnh PowerShell từ xa bằng Run Command**:
     *   Sử dụng công cụ **Run Command** chạy tài liệu `AWS-RunPowerShellScript` với câu lệnh `net user` để kiểm tra danh sách tài khoản người dùng trên hệ thống từ xa mà không cần RDP vào máy ảo.
-    *   Cấu hình lưu trữ đầu ra logs trực tiếp vào S3 Bucket `ssm-runcommand-logs-trantrung04`.
+    *   Cấu hình lưu trữ đầu ra logs trực tiếp vào S3 Bucket `ssm-runcommand-logs-lamquangvu`.
     *   Câu lệnh được thực thi thành công trên cả 2 máy ảo, trả về danh sách tài khoản Windows chi tiết bao gồm `Administrator`, `Guest`, `DefaultAccount`, `WDAGUtilityAccount`.
     *   *Minh chứng thực tế*:
         *   Cấu hình gửi lệnh Run Command: ![Run Command Config](/images/worklog/week-12/8_run_command_config.png)
@@ -78,7 +78,7 @@ Trong tuần này, tôi đã thực hành chuỗi Lab thực tế từ **Lab 28 
 Để đảm bảo tối ưu chi phí và không phát sinh bất kỳ khoản phí phát sinh nào ngoài mong muốn trên tài khoản AWS Free Tier, tôi đã dọn dẹp sạch sẽ toàn bộ hạ tầng đã tạo ở tuần này ngay sau khi thực hành xong:
 *   Hủy hoàn toàn (**Terminate**) 2 máy ảo Windows Server: `Windows-Lab-SSM-1` và `Windows-Lab-SSM-2`.
 *   Xóa bỏ 2 Key Pairs đã tạo: `Windows-Lab-SSM-1-Key` và `Windows-Lab-SSM-2-Key` (đồng thời xóa các file `.pem` lưu cục bộ).
-*   Xóa sạch logs và xóa bỏ S3 bucket `ssm-runcommand-logs-trantrung04`.
+*   Xóa sạch logs và xóa bỏ S3 bucket `ssm-runcommand-logs-lamquangvu`.
 *   Gỡ bỏ IAM Role khỏi Instance Profile, gỡ bỏ đính kèm policy và xóa IAM Role `Windows-Lab-SSM-Role` cùng Instance Profile.
 *   Giải phóng và xóa bỏ hạ tầng mạng bao gồm Subnets, Internet Gateway và VPC `windows-lab-ssm`.
 

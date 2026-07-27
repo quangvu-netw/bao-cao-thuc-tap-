@@ -86,13 +86,13 @@ Practice building a complete CI/CD system using AWS Developer Tools to automatic
 * **Connect GitHub to CodeBuild:**
   * Access CodeBuild service in `ap-southeast-1` (Singapore) region.
   * Create a new Build project, select Source provider as **GitHub**.
-  * AWS requires GitHub OAuth authentication - log in to GitHub account `tranvantrung27` and authorize AWS CodeBuild to access the repository.
+  * AWS requires GitHub OAuth authentication - log in to GitHub account `quangvu-netw` and authorize AWS CodeBuild to access the repository.
   * Two-factor authentication (2FA) on GitHub via mobile device completed successfully.
   * GitHub OAuth connection successful, CodeBuild recognizes the account and repository.
 
 * **Build Project `AWS-FCJ-APP` created successfully:**
   * **Source provider:** GitHub
-  * **Repository:** `https://github.com/tranvantrung27/aws-fcj-pipeline.git` (using the GitHub repository created in Step 3)
+  * **Repository:** `https://github.com/quangvu-netw/aws-fcj-pipeline.git` (using the GitHub repository created in Step 3)
   * **Environment:**
     * Operating System: Amazon Linux
     * Runtime: Standard
@@ -101,7 +101,7 @@ Practice building a complete CI/CD system using AWS Developer Tools to automatic
   * **Buildspec:** Uses the `buildspec.yml` file from the source code
   * **Artifacts:**
     * Type: Amazon S3
-    * Bucket name: `aws-cicd-ec2-trantrung04`
+    * Bucket name: `aws-cicd-ec2-lamquangvu`
   * **Logs:**
     * CloudWatch Logs: Enabled
     * Group name: `aws-cicd-ec2-group`
@@ -119,7 +119,7 @@ Practice building a complete CI/CD system using AWS Developer Tools to automatic
 * **Note:** At the time of this lab, the CodeDeploy Console redirects to the "Complete your account setup" page because the AWS account verification is still in progress. Need to wait for verification to complete before continuing.
 
 ###### **Step 6: AWS CodePipeline (Pending)**
-* Create a Pipeline connecting: Source (GitHub `tranvantrung27/aws-fcj-pipeline`) -> Build (CodeBuild `AWS-FCJ-APP`) -> Deploy (CodeDeploy `AWS-FCJ-APP` / `AWS-FCJ-DG`).
+* Create a Pipeline connecting: Source (GitHub `quangvu-netw/aws-fcj-pipeline`) -> Build (CodeBuild `AWS-FCJ-APP`) -> Deploy (CodeDeploy `AWS-FCJ-APP` / `AWS-FCJ-DG`).
 * Test the automated deployment process when a new commit is pushed.
 * CodePipeline Console accessed successfully (Pipelines page shows empty, no pipelines created yet).
 
@@ -131,7 +131,7 @@ Practice creating a File Storage Gateway to connect local on-premises storage to
 ##### 2. Practical Implementation Steps
 ###### **Step 1: Resource Provisioning (S3 & EC2)**
 * **Create S3 Bucket:**
-  * Created an S3 bucket named `s3-instancestoragegw-trantrung04` in the `ap-southeast-1` (Singapore) region.
+  * Created an S3 bucket named `s3-instancestoragegw-lamquangvu` in the `ap-southeast-1` (Singapore) region.
   ![S3 Storage Gateway Created](/images/worklog/week-11/s3_storagegw_created.png)
 * **Launch EC2 Storage Gateway Instance:**
   * Launched an EC2 instance to simulate the on-premises Storage Gateway Appliance.

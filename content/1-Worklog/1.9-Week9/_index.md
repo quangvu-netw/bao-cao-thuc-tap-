@@ -301,7 +301,7 @@ Create a custom CloudWatch Dashboard for visual metrics tracing.
 AWS Firelens integrates Fluent Bit routing to direct container logs to third-party endpoints or AWS destinations.
 
 ###### 7.1. Create Amazon S3 Bucket for Logs Storage
-* Provisioned S3 bucket `fcj-firelens-logs-trung-2026` to store container standard output logs.
+* Provisioned S3 bucket `fcj-firelens-logs-vu-2026` to store container standard output logs.
 * Verified S3 bucket creation on the console:
 
 ![S3 logs bucket](/images/worklog/week-9/1_s3_firelens_logs.png)
