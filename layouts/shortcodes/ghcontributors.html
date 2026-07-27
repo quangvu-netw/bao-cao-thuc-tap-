@@ -22,7 +22,7 @@
   {{ $url := .Get 0 }}
   {{ with resources.GetRemote $url }}
     {{ with .Err }}
-      {{ warnf "Unable to fetch contributors from %s: %s" $url . }}
+      <!-- Unable to fetch contributors from {{ $url }} -->
     {{ else }}
       {{ range (. | transform.Unmarshal) }}
       <div>
